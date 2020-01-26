@@ -10,7 +10,9 @@ function Player() {
             <a href="javascript:void();"><i className="fas fa-chevron-right"></i></a>
         </div>
         <div className="progress">
-            
+          <div className="bar">
+            <div></div>
+          </div>
         </div>
     </div>
   );
