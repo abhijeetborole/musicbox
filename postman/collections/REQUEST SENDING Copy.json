@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "ff9dabf2-aaaa-46da-bffa-de38af8dd2a1",
+		"name": "Test API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "23346107-ff9dabf2-aaaa-46da-bffa-de38af8dd2a1"
+	},
+	"item": [
+		{
+			"name": "Test API Folder",
+			"item": [],
+			"id": "8cd239d4-e70c-47cd-9a96-fb25342db777"
+		},
+		{
+			"name": "Request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4d86d35c-f948-43da-9485-3fecd72264b2",
+						"exec": [
+							"const typeFromCollectionVariables =  pm.collectionVariables.get(\"type\"),",
+							"    typeFromEnvironmentVariables =  pm.environment.get(\"type\"),",
+							"    typeFromGlobals = pm.globals.get(\"type\");",
+							"",
+							"console.log('types', typeFromCollectionVariables, typeFromEnvironmentVariables, typeFromGlobals);",
+							"",
+							"let sessionType = pm.variables.get('type');",
+							"",
+							"// When no environment is set",
+							"typeFromEnvironmentVariables && console.log('This variable should be environment = ', sessionType);",
+							"",
+							"// When environment is set ",
+							"typeFromCollectionVariables && !typeFromEnvironmentVariables && console.log('This variable should be collection = ', sessionType);",
+							"",
+							"typeFromGlobals && !typeFromEnvironmentVariables && !typeFromCollectionVariables && console.log('This variable should be globals = ', sessionType);",
+							"",
+							"pm.variables.set('type', 'session');",
+							"sessionType = pm.variables.get('type');",
+							"",
+							"console.log('This variable should be session = ', sessionType);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "a68591d7-842b-45dd-be2e-6083739a24d5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}?{{query}}",
+					"host": [
+						"{{url}}"
+					],
+					"query": [
+						{
+							"key": "{{query}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "9a98658a-ecd6-4cc4-a5c9-f597b792948b",
+					"name": "Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}?{{query}}",
+							"host": [
+								"{{url}}"
+							],
+							"query": [
+								{
+									"key": "{{query}}",
+									"value": null
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "5d75b2f0-1b4a-4ad2-99ec-7f5d1ebe12b0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "afb096e2-6d2e-4043-8290-e2a024f6288c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "30a103d0-7b45-4f73-84d2-96b7a5625ab1",
+			"key": "url",
+			"value": "postman-echo.com/get",
+			"type": "default"
+		},
+		{
+			"id": "8140d765-beca-43ee-b3e1-f33b1259264f",
+			"key": "query",
+			"value": "collection",
+			"type": "default"
+		},
+		{
+			"id": "11c2845c-d2b3-44be-a01f-8622a6333969",
+			"key": "type",
+			"value": "collection",
+			"type": "default",
+			"disabled": true
+		}
+	]
+}
